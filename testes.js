@@ -42,7 +42,7 @@ console.log(resultado); **/
 lista.splice(1, 2, "abacaxi", "manga");
 console.log(lista) **/
 
-class Pessoa {
+/** class Pessoa {
     constructor(nome, idade) {
       this.nome = nome;
       this.idade = idade;
@@ -51,9 +51,9 @@ class Pessoa {
     apresentar() {
       console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
     }
-  }
+  } **/
   
-  class Funcionario extends Pessoa {
+/**  class Funcionario extends Pessoa {
     constructor(nome, idade, salario) {
       super(nome, idade);
       this.salario = salario;
@@ -65,4 +65,38 @@ class Pessoa {
     }
   }
   const yan = new Funcionario("yan", 18, 100000000);
-  yan.apresentar()
+  yan.apresentar() **/
+
+  /** function somaArray(numeros) {
+    let soma = 0; // Inicializa a variável soma
+    for (i = 0; i < numeros.length; i++) { // Declara a variável i com let
+        soma += 2 * numeros[i]; // Acumula a soma
+    }
+    return soma;
+}
+console.log(somaArray([1, 2, 3, 4])); // Saída: 20 **/
+
+class Produto {
+  constructor(nome, preco){
+    this.nome = nome;
+    this.preco = preco
+  }
+  calcularDesconto(){
+    const valorDescontado = thispreco * 0.9
+    console.log(`O produto ${this.nome}, que antes custava R$${this.preco}, agora com desconto de 10%, custa R$${valorDescontado}`);
+  }
+}
+class Livro extends Produto {
+  constructor(nome, preco){
+    super(nome, preco);
+  }
+  calcularDesconto(){
+    const valorDescontado = this.preco * 0.8
+    console.log(`O livro ${this.nome}, que antes custava R$${this.preco}, agora com desconto de 20%, custa R$${valorDescontado}`);
+  }
+}
+  const produto = new Produto("Notebook", 2500);
+  produto.calcularDesconto();
+
+ const livro = new Livro("Jogos Vorazes", 150);
+ livro.calcularDesconto();

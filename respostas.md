@@ -203,5 +203,71 @@ d) A asserção é verdadeira e a razão é verdadeira, e a razão explica a ass
 **Resposta:** Alternativa B
 
 **Justificativa:** O polimorfismo permite que objetos de diferentes classes respondam ao mesmo método de maneiras diferentes. Isso é alcançado por meio de sobrescrita de métodos, quando métodos da classe filha tem a mesma nomeação da classe pai. Mas em JavaScript, o polimorfismo é implementado principalmente por meio de sobrescrita de métodos, não por sobrecarga de métodos .
+______
+# Questões dissertativas
+9) O seguinte código deve retornar a soma do dobro dos números de um array, mas contém erros. Identifique os problema e corrija o código para que funcione corretamente. Adicione comentários ao código explicado sua solução para cada problema.
+
+```javascript
+function somaArray(numeros) {
+
+
+    for (i = 0; i < numeros.size; i++) {
+        soma = 2*numeros[i];
+    }
+    return soma;
+}
+console.log(somaArray([1, 2, 3, 4]));
+```
+**Resposta:**
+```javascript
+function somaArray(numeros) {
+    let soma = 0; // Corrigido: inicializa a variável soma sem valor
+
+    // Corrigido: usei numeros.length em vez de numeros.size
+    for (i = 0; i < numeros.length; i++) { // Define i sendo inicialmento 0. Enquanto i for menor que o comprimento do array numeros, a cada iteração, o valor de i é incrementado em 1, passando para o próximo elemento do array 
+
+    // Corrigido: acumula a soma dos valores multiplicados por 2
+        soma += 2 * numeros[i]; // Acumula a soma, sendo o resultado da soma com o dobro do elemento do array, percorrendo um elemento de cada vez por conta do for => (pega o valor atual da variável soma, adiciona o resultado de 2 * numeros[i] e armazena o novo valor em soma)
+    }
+    return soma;
+}
+console.log(somaArray([1, 2, 3, 4])); // Saída: 20
+```
 
 ______
+10) Crie um exemplo prático no qual você tenha duas classes:
+
+- Uma classe `Produto` com atributos `nome` e `preco`, e um método `calcularDesconto()` que aplica um desconto fixo de 10% no preço do produto.
+- Uma classe `Livro` que herda de `Produto` e modifica o método `calcularDesconto()`, aplicando um desconto de 20% no preço dos livros.
+
+Explique como funciona a herança nesse contexto e como você implementaria a modificação do método na classe `Livro`.
+
+**Resposta:**
+```javascript
+
+class Produto {
+  constructor(nome, preco){
+    this.nome = nome;
+    this.preco = preco
+  }
+  calcularDesconto(){
+    const valorDescontado = this.preco * 0.9
+    console.log(`O produto ${this.nome}, que antes custava R$${this.preco}, agora com desconto de 10%, custa R$${valorDescontado}`);
+  }
+}
+class Livro extends Produto {
+  constructor(nome, preco){
+    super(nome, preco);
+  }
+  calcularDesconto(){
+    const valorDescontado = this.preco * 0.8
+    console.log(`O livro ${this.nome}, que antes custava R$${this.preco}, agora com desconto de 20%, custa R$${valorDescontado}`);
+  }
+}
+  const produto = new Produto("Notebook", 2500);
+  produto.calcularDesconto();
+
+ const livro = new Livro("Jogos Vorazes", 150);
+ livro.calcularDesconto();
+ ```
+**Explicação:** A classe Livro herda da classe Produto, o que significa que Livro recebe todos os atributos (nome e preco) e métodos (calcularDesconto) da classe Produto. Quando o método é chamado em um objeto da classe Livro, a versão sobrescrita do método é executada, aplicando o desconto de 20%. Isso demonstra o conceito de sobrescrita de métodos, onde a classe filha pode fornecer uma implementação específica de um método herdado.
